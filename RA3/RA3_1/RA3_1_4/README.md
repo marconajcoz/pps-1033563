@@ -6,4 +6,5 @@ Esta sección corresponde a las siguientes imagenes.
 Vamos a hacer la configuración para evitar los ataques DDos con mod_evasive. Esta es la configuración:  
 ![IMG](https://github.com/marconajcoz/pps-1033563/blob/main/RA3/RA3_1/RA3_1_4/assets/10-ConfigurarDDos.PNG)  
 
-Vamos a hacer 
+Vamos a hacer un test y veremmos como rexhaza la mayoría de las 1000 peticiones:
+![IMG](https://github.com/marconajcoz/pps-1033563/blob/main/RA3/RA3_1/RA3_1_4/assets/11-ApacheBloqueaDDos.PNG)
