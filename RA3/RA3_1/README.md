@@ -1,6 +1,6 @@
 # RA3_1
 En esta práctica vamos a hacer el hardening de un servidor apache siguiendo varios pasos. Vamos a realizarlo sobre Docker, creando una imagen por cada ejercicio realizado.
-Enlace a Docker Marco Najar [Docker prácticas]([URL_TASKS](https://hub.docker.com/repository/docker/marnajcoz/practicas/general)) :
+Enlace a Docker Marco Najar [Docker prácticas](https://hub.docker.com/repository/docker/marnajcoz/practicas/general) :
 
 # Tasks
 
