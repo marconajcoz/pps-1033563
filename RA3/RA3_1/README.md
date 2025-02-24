@@ -11,12 +11,8 @@ Enlace a Docker Marco Najar: [Docker prácticas](https://hub.docker.com/reposito
 
 ![IMG](URL_IMG)
 
-Example code:
+Comandos:
 
 ```
 $ git clone https://github.com/openssh/openssh-portable
-$ patch -p1 < ~/path/to/openssh.patch
-$ autoreconf
-$ ./configure
-$ make
 ```
