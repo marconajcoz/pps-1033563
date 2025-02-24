@@ -1,8 +1,7 @@
 # RA3
 
-Exploration of the ...
+El RA3 Incluye lo siguiente:
 
-Includes the following:
 * [RA3_1](#TODO):
 * [RA3_2](#TODO):
 * [RA3_3](#TODO):
