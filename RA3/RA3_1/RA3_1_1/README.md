@@ -13,3 +13,16 @@ Vamos a deshabilitar el autoindex:
 
 Continuando con introducir el ServerToken:  
 ![IMG](https://github.com/marconajcoz/pps-1033563/blob/main/RA3/RA3_1/RA3_1_1/assets/3-ServerToken.PNG)  
+
+Se aplica el header en modo estricto:  
+![IMG](https://github.com/marconajcoz/pps-1033563/blob/main/RA3/RA3_1/RA3_1_1/assets/4-HEaderEstricto.PNG)  
+
+Y comprobamos que el CSP funciona sacando la cabezera con un curl:  
+![IMG](https://github.com/marconajcoz/pps-1033563/blob/main/RA3/RA3_1/RA3_1_1/assets/7-CSPFunciona.PNG)  
+
+## Certificados  
+Vamos a crear certificados autofirmados para cifrar las comunicaciones, necesario para realización del resto de ejercicios:  
+![IMG](https://github.com/marconajcoz/pps-1033563/blob/main/RA3/RA3_1/RA3_1_1/assets/5-Certificados.PNG)  
+
+Ahora que tenemos los certificados creados, vamos a crear el Virtualhost 443 para recibir conexiones seguras, y a redirigir las del puerto 80 al 443.  
+![IMG](https://github.com/marconajcoz/pps-1033563/blob/main/RA3/RA3_1/RA3_1_1/assets/6-Redirigir443.PNG)
