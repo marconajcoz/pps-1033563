@@ -8,11 +8,3 @@ Enlace a Docker Marco Najar: [Docker prácticas](https://hub.docker.com/reposito
 * [Práctica 2](https://github.com/marconajcoz/pps-1033563/tree/main/RA3/RA3_1/RA3_1_2): Web Application Firewall
 * [Práctica 3](https://github.com/marconajcoz/pps-1033563/tree/main/RA3/RA3_1/RA3_1_3): Reglas OWASP
 * [Práctica 4](https://github.com/marconajcoz/pps-1033563/tree/main/RA3/RA3_1/RA3_1_4): Evitar Ataques DDOS
-
-![IMG](URL_IMG)
-
-Comandos:
-
-```
-$ git clone https://github.com/openssh/openssh-portable
-```
