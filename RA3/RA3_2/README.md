@@ -71,4 +71,8 @@ with open('rockyou.txt', 'rb') as f:
 El ataque fue exitoso: se encontró la combinación correcta de usuario y contraseña.
 
 Resultado obtenido en la ejecución:
-![Resultado Bruteforce](assets/3-BruteForceResultado.PNG)
+
+<p align="center">
+  <img src="assets/3-BruteForceResultado.PNG" alt="Resultado Bruteforce" width="600">
+</p>
+
