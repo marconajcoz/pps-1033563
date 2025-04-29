@@ -99,3 +99,32 @@ Esto ejecuta el ping a `localhost`, y luego el comando `ls` que lista el conteni
 ## ✅ Resultado
 
 Se observó que la aplicación ejecutó correctamente ambos comandos (`ping` y `ls`), mostrando la salida del segundo dentro del navegador, lo que confirma la vulnerabilidad.
+
+## 🧩 File Inclusion
+
+En este módulo se explota una vulnerabilidad de **inclusión de archivos locales (LFI)**, que permite al atacante leer archivos del sistema al manipular una variable que apunta a archivos.
+
+### 🔍 Acciones realizadas:
+
+- Se accedió al módulo **File Inclusion** en DVWA.
+- En la URL se modificó el parámetro `page` para intentar acceder a archivos sensibles del sistema.
+- Se utilizó una secuencia de directorios para escalar hasta la raíz y acceder al archivo `/etc/passwd`.
+
+### 💡 Inyección utilizada:
+
+http://172.17.0.2/vulnerabilities/fi/?page=../../../../../../etc/passwd
+
+
+Esta ruta accede al archivo de contraseñas del sistema Linux, que enumera todos los usuarios registrados.
+
+### 📷 Captura del ataque:
+
+<p align="center">
+  <img src="assets/5-FileInclusion.PNG" alt="File Inclusion DVWA" width="700">
+</p>
+
+## ✅ Resultado
+
+Se obtuvo correctamente el contenido del archivo `/etc/passwd`, lo cual demuestra que el parámetro vulnerable permite incluir archivos arbitrarios del sistema.
+
+Esto es una vulnerabilidad crítica, ya que permite al atacante conocer usuarios del sistema e incluso combinarse con ejecución remota de código si se incluyen archivos con contenido malicioso.
