@@ -128,3 +128,41 @@ Esta ruta accede al archivo de contraseñas del sistema Linux, que enumera todos
 Se obtuvo correctamente el contenido del archivo `/etc/passwd`, lo cual demuestra que el parámetro vulnerable permite incluir archivos arbitrarios del sistema.
 
 Esto es una vulnerabilidad crítica, ya que permite al atacante conocer usuarios del sistema e incluso combinarse con ejecución remota de código si se incluyen archivos con contenido malicioso.
+
+## 🧩 File Upload + File Inclusion
+
+Este módulo permite probar vulnerabilidades asociadas a la **subida insegura de archivos**. Aprovechando esto, se intenta subir un archivo malicioso que, combinado con **File Inclusion**, permita ejecutar una reverse shell.
+
+### 🔍 Acciones realizadas
+
+1. Se creó un archivo PHP camuflado como imagen (`rev.php.png`) que contiene una reverse shell:
+
+![Archivo PHP para Reverse Shell](assets/6-UploadArchivoPHP.PNG)
+
+2. Se subió el archivo desde el módulo **File Upload**. DVWA aceptó la carga indicando que fue exitosamente guardado:
+
+![Archivo Subido](assets/7-UploadArchivoSubido.PNG)
+
+3. Se intentó acceder al archivo usando **File Inclusion** para forzar su ejecución desde la ruta:
+
+http://172.17.0.2/vulnerabilities/fi/?page=../../../../hackable/uploads/rev.php.png
+
+
+4. Mientras tanto, se dejó escuchando una conexión inversa con `netcat` en el puerto 9001:
+
+```bash
+nc -lvnp 9001
+
+````
+### ⚠️ Nota
+
+Aunque el procedimiento fue correcto, **no se logró establecer la reverse shell**. Posibles causas:
+
+- El archivo `.php.png` no fue ejecutado como PHP por el servidor.
+- El servidor puede tener protecciones contra ejecución de archivos subidos.
+- Faltó modificar la configuración de DVWA o del servidor para permitir ejecución de archivos `.php`.
+
+### ✅ Resultado
+
+La prueba demuestra que, si el servidor no valida extensiones y contenido correctamente, un atacante puede subir código malicioso.  
+Aunque no se obtuvo acceso remoto en este caso, la vulnerabilidad de **subida no restringida + inclusión de archivos** es crítica.
