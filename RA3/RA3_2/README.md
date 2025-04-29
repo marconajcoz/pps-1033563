@@ -1,8 +1,8 @@
-# Fuerza Bruta en DVWA - Práctica
+# DVWA - Práctica
 
 ## 📋 Descripción
 
-Esta práctica consiste en realizar un ataque de fuerza bruta a la aplicación **DVWA (Damn Vulnerable Web App)** para romper la autenticación del módulo de **Brute Force** utilizando un script en Python y el diccionario `rockyou.txt`.
+Esta práctica consiste en realizar un ataque de fuerza bruta a la aplicación **DVWA (Damn Vulnerable Web App)** para romper la autenticación de los diferentes módulos utilizando un script en Python y el diccionario `rockyou.txt`.
 
 ## 🛠️ Entorno de trabajo
 
