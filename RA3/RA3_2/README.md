@@ -222,3 +222,40 @@ Se logró extraer correctamente la versión del gestor de base de datos:
 
 La vulnerabilidad fue explotada con éxito mediante técnicas de inferencia, demostrando que incluso sin errores visibles o respuestas directas, se pueden extraer datos sensibles.  
 Este tipo de ataque es especialmente grave porque suele pasar desapercibido en auditorías superficiales.
+
+## 🧩 Weak Session IDs
+
+En este módulo de DVWA se estudia una mala práctica relacionada con la **generación predecible de identificadores de sesión (Session IDs)**. Este tipo de vulnerabilidad puede permitir a un atacante predecir o forzar una sesión válida y secuestrar la identidad de otro usuario.
+
+### 🔍 Análisis del código fuente
+
+Al revisar el archivo `high.php` del módulo, se observa el siguiente fragmento en PHP:
+
+![Código de la vulnerabilidad](assets/12-Cookie.PNG)
+
+### 💡 Deducción técnica
+
+1. El valor de la cookie `dvwaSession` no se genera de forma aleatoria, sino que se calcula como:
+
+   md5($_SESSION['last_session_id_high'])
+
+2. La variable `last_session_id_high` simplemente incrementa su valor cada vez que se accede al recurso vía POST:
+
+```php
+$_SESSION['last_session_id_high']++;
+```
+3. Esto implica que los valores de sesión son predecibles: son simplemente el md5 de un contador que empieza en 0.
+
+4. Un atacante podría generar todos los posibles valores de sesión usando un bucle como:
+
+```python
+import hashlib
+
+for i in range(1000):
+    print(hashlib.md5(str(i).encode()).hexdigest())
+```
+
+## ✅ Resultado
+
+Este comportamiento expone al sistema a ataques de predicción de sesión, donde un atacante no necesita fuerza bruta sobre valores aleatorios, sino simplemente conocer el algoritmo (en este caso, md5) y su patrón incremental.
+Es un ejemplo claro de cómo una mala implementación en la generación de cookies puede romper la seguridad de la autenticación.
