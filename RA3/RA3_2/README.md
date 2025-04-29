@@ -288,3 +288,25 @@ http://172.17.0.2/vulnerabilities/xss_d/?default=English#<script>alert(document.
 
 Se comprobó que la aplicación es vulnerable a DOM-Based XSS, lo que permite la ejecución de código malicioso directamente en el navegador de la víctima.
 Este tipo de ataque puede ser utilizado para robar cookies, suplantar identidades o realizar acciones en nombre del usuario autenticado sin que el servidor lo detecte.
+
+## 🧩 Reflected XSS (Cross-Site Scripting)
+
+La vulnerabilidad **XSS reflejado** ocurre cuando una aplicación web **refleja directamente datos introducidos por el usuario en la respuesta HTML** sin validarlos o codificarlos adecuadamente. Esto permite inyectar y ejecutar código JavaScript en el navegador de la víctima.
+
+### 🔍 Acciones realizadas
+
+1. Se accedió al módulo **XSS (Reflected)** en DVWA.
+2. En el parámetro `name` de la URL, se inyectó código malicioso que fue devuelto sin sanear por el servidor.
+3. Se utilizó el siguiente **payload**, el cual utiliza un evento `onerror` en una etiqueta `img` para ejecutar JavaScript:
+
+```html
+<img src=x onerror="alert(document.cookie)">
+```
+4. Este código fue interpretado por el navegador y ejecutado, mostrando en una ventana emergente (alert) la cookie del usuario.
+Se ha usado el payload: http://172.17.0.2/vulnerabilities/xss_r/?name=<img src=x onerror="alert(document.cookie)">
+
+![Vulneración](assets/14-XSSReflected.PNG)
+
+## ✅ Resultado
+El servidor devolvió sin filtrar el valor del parámetro name, lo que permitió la ejecución de código JavaScript.
+Esta vulnerabilidad puede ser aprovechada para robar sesiones, redirigir usuarios, insertar keyloggers o ejecutar otras acciones maliciosas desde enlaces manipulados.
