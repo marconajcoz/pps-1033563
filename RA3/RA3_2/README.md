@@ -8,7 +8,7 @@ Esta práctica consiste en realizar un ataque de fuerza bruta a la aplicación *
 
 - **Sistema Operativo**: Linux Mint 21
 - **Aplicación objetivo**: DVWA (Damn Vulnerable Web App)
-- **IP DVWA**: `127.0.0.1` (localhost)
+- **IP DVWA**: `172.17.0.2` (localhost)
 - **Lenguaje del script**: Python 3
 - **Herramientas utilizadas**:
   - Python 3
@@ -21,7 +21,7 @@ Esta práctica consiste en realizar un ataque de fuerza bruta a la aplicación *
 - **Configuración de la base de datos**: Correcta
 - **Observaciones**: Se requiere el token `user_token` en cada petición.
 
-![Setup DVWA](imagenes/1-DVWAsetup.PNG)
+![Setup DVWA](assets/1-DVWAsetup.PNG)
 
 ## 🧩 Script de Fuerza Bruta
 
