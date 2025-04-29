@@ -76,3 +76,26 @@ Resultado obtenido en la ejecución:
   <img src="assets/3-BruteForceResultado.PNG" alt="Resultado Bruteforce" width="600">
 </p>
 
+## 🧩 Command Injection
+
+En este módulo de DVWA se explota una vulnerabilidad de **inyección de comandos** en el parámetro usado para hacer ping a una IP.
+
+### 🔍 Acciones realizadas:
+
+- Se accedió al apartado **Command Injection** en DVWA.
+- En el campo “Enter an IP address” se introdujo un comando malicioso: `localhost | ls`
+- Esto permite inyectar un segundo comando (`ls`) y ejecutar código arbitrario en el sistema.
+
+### 💡 Comando utilizado: localhost | ls
+
+Esto ejecuta el ping a `localhost`, y luego el comando `ls` que lista el contenido del directorio actual del servidor.
+
+### 📷 Captura del ataque:
+
+<p align="center">
+  <img src="assets/4-CommandInjection.PNG" alt="Command Injection en DVWA" width="600">
+</p>
+
+## ✅ Resultado
+
+Se observó que la aplicación ejecutó correctamente ambos comandos (`ping` y `ls`), mostrando la salida del segundo dentro del navegador, lo que confirma la vulnerabilidad.
