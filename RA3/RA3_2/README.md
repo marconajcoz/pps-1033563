@@ -166,3 +166,17 @@ Aunque el procedimiento fue correcto, **no se logró establecer la reverse shell
 
 La prueba demuestra que, si el servidor no valida extensiones y contenido correctamente, un atacante puede subir código malicioso.  
 Aunque no se obtuvo acceso remoto en este caso, la vulnerabilidad de **subida no restringida + inclusión de archivos** es crítica.
+
+## 🧩 SQL Injection
+
+Este módulo de DVWA permite probar vulnerabilidades de **inyección de código SQL**, que se producen cuando el servidor no filtra correctamente la entrada de usuario antes de ejecutar consultas en la base de datos.
+
+### 🔍 Acciones realizadas
+
+1. Se accedió al módulo **SQL Injection**.
+2. En el campo de entrada se utilizó el siguiente payload para realizar una inyección SQL:
+   ' UNION SELECT user, password FROM users#
+3. El objetivo del payload es modificar la consulta original para que devuelva los usuarios y contraseñas de la tabla `users`, ignorando el resto de la sentencia con `#`.
+
+4. La aplicación devolvió una lista de nombres de usuario y hashes de contraseñas, lo que confirma la vulnerabilidad.
+![Setup DVWA](assets/9-SQLInjection.PNG)
