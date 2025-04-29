@@ -259,3 +259,32 @@ for i in range(1000):
 
 Este comportamiento expone al sistema a ataques de predicción de sesión, donde un atacante no necesita fuerza bruta sobre valores aleatorios, sino simplemente conocer el algoritmo (en este caso, md5) y su patrón incremental.
 Es un ejemplo claro de cómo una mala implementación en la generación de cookies puede romper la seguridad de la autenticación.
+
+## 🧩 DOM Based XSS (Cross-Site Scripting)
+
+Esta vulnerabilidad se produce cuando el **navegador interpreta contenido peligroso directamente desde el DOM (Document Object Model)**, en lugar de hacerlo desde el servidor. En este caso, el ataque se ejecuta en el lado del cliente, y no hay validación o filtrado por parte del servidor.
+
+### 🔍 Acciones realizadas
+
+1. Se accedió al módulo **XSS (DOM)** de DVWA.
+2. Se identificó que el valor de la URL tras el carácter `#` (fragmento) es reflejado e interpretado por el navegador sin ser saneado.
+3. Se utilizó el siguiente **payload** para extraer la cookie del usuario:
+
+```html
+<script>alert(document.cookie);</script>
+```
+4. El código malicioso fue inyectado en la URL como parámetro tras el #, lo cual no es enviado al servidor, sino procesado directamente por el navegador.
+5. Al cargar la página con el payload, se ejecutó el código JavaScript mostrando en un alert() la cookie de sesión.
+
+### 💡 Payload utilizado
+
+http://172.17.0.2/vulnerabilities/xss_d/?default=English#<script>alert(document.cookie);</script>
+
+## 📷 Captura del ataque
+
+![Vulneración](assets/13-XSSDom.PNG)
+
+## ✅ Resultado
+
+Se comprobó que la aplicación es vulnerable a DOM-Based XSS, lo que permite la ejecución de código malicioso directamente en el navegador de la víctima.
+Este tipo de ataque puede ser utilizado para robar cookies, suplantar identidades o realizar acciones en nombre del usuario autenticado sin que el servidor lo detecte.
