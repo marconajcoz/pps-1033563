@@ -179,4 +179,46 @@ Este módulo de DVWA permite probar vulnerabilidades de **inyección de código 
 3. El objetivo del payload es modificar la consulta original para que devuelva los usuarios y contraseñas de la tabla `users`, ignorando el resto de la sentencia con `#`.
 
 4. La aplicación devolvió una lista de nombres de usuario y hashes de contraseñas, lo que confirma la vulnerabilidad.
+
 ![Setup DVWA](assets/9-SQLInjection.PNG)
+
+## 🧩 Blind SQL Injection
+
+Este módulo permite explotar una **inyección SQL ciega**, donde no se recibe respuesta directa del servidor, pero es posible inferir información a partir del comportamiento o contenido de la respuesta.
+
+### 🔍 Acciones realizadas
+
+1. Se desarrolló un script en Python que automatiza la extracción del resultado de la función `version()` de la base de datos mediante inyección SQL en la **cookie** de sesión.
+
+2. La técnica empleada se basa en:
+
+   - Determinar primero la longitud del resultado de `version()`.
+   - A continuación, extraer carácter por carácter el valor de la versión, comprobando su correspondencia con cada valor ASCII.
+
+3. La inyección se realiza dentro de la cookie `id`:
+
+id=1' AND length(version())=24#
+
+y luego:
+
+id=1' AND ascii(substring(version(),{pos},1))={ascii_code}#
+
+4. El servidor no muestra el resultado directamente, pero responde con el mensaje “User ID exists in the database” si la condición es verdadera, permitiendo inferir los valores uno a uno.
+
+### 📄 Script utilizado
+
+![Blind SQL Script](assets/10-BlindScript.PNG)
+
+### 💻 Resultado en terminal
+
+![Resultado Blind SQL Injection](assets/11-BlindSQLResultado.PNG)
+
+Se logró extraer correctamente la versión del gestor de base de datos:
+
+10.1.26-MariaDB-0+deb9u1
+
+
+## ✅ Resultado
+
+La vulnerabilidad fue explotada con éxito mediante técnicas de inferencia, demostrando que incluso sin errores visibles o respuestas directas, se pueden extraer datos sensibles.  
+Este tipo de ataque es especialmente grave porque suele pasar desapercibido en auditorías superficiales.
