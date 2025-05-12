@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM('* * * * *') // Ejecuta cada minuto si hay cambios (puedes ajustar esto)
+    }
+    stages {
+        stage('Clonar repositorio') {
+            steps {
+                git 'https://github.com/tu-usuario/tu-repo.git'
+            }
+        }
+        stage('Test unitarios') {
+            steps {
+                sh 'python3 -m unittest test_calculadora.py'
+            }
+        }
+    }
+}
