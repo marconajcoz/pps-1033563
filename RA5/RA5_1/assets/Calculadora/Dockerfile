@@ -5,11 +5,12 @@ USER root
 RUN apt-get update && apt-get install -y \
     git \
     python3 \
-    python3-pip \
-    docker.io \
     curl \
+    docker.io \
     unzip \
-    && pip3 install --no-cache-dir pytest
+    && curl -sS https://bootstrap.pypa.io/get-pip.py | python3
+
+RUN pip install --no-cache-dir pytest
 
 WORKDIR /app
 
