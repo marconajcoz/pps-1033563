@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clonar repositorio') {
             steps {
-                git 'https://github.com/tu-usuario/tu-repo.git'
+                git 'https://github.com/marconajcoz/pps-1033563.git'
             }
         }
         stage('Test unitarios') {
