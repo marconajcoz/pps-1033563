@@ -9,31 +9,41 @@ pipeline {
                 }
             }
             steps {
-                sh 'python3 -m unittest test_calculadora.py'
+                dir('RA5/RA5_1/assets/Calculadora') {
+                    sh 'python3 -m unittest test_calculadora.py'
+                }
             }
         }
 
         stage('Crear imagen Docker') {
             steps {
-                sh 'docker build -t calculadora-python .'
+                dir('RA5/RA5_1/assets/Calculadora') {
+                    sh 'docker build -t calculadora-python .'
+                }
             }
         }
 
         stage('Ejecutar contenedor Docker') {
             steps {
-                sh 'docker run --rm calculadora-python'
+                dir('RA5/RA5_1/assets/Calculadora') {
+                    sh 'docker run --rm calculadora-python'
+                }
             }
         }
 
         stage('Tests dentro de Docker') {
             steps {
-                sh 'docker run --rm calculadora-python python3 -m unittest test_calculadora.py'
+                dir('RA5/RA5_1/assets/Calculadora') {
+                    sh 'docker run --rm calculadora-python python3 -m unittest test_calculadora.py'
+                }
             }
         }
 
         stage('Ejecutar docker-compose') {
             steps {
-                sh 'docker-compose up --abort-on-container-exit'
+                dir('RA5/RA5_1/assets/Calculadora') {
+                    sh 'docker-compose up --abort-on-container-exit'
+                }
             }
         }
     }
