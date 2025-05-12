@@ -75,6 +75,7 @@ Para facilitar la configuración del entorno de integración continua, se ha opt
 Primero, se ejecuta el siguiente comando:
 
 ```bash
+docker-compose build
 docker-compose up -d
 ```
 
@@ -100,6 +101,40 @@ Finalmente, accedemos al panel de Jenkins ya funcional:
 
 ---
 
+🔍 Configuración de la pipeline y credenciales
+
+Paso 1: Crear la tarea tipo Pipeline en Jenkins
+
+Desde el panel principal de Jenkins, seleccionamos "Nuevo Item" y creamos una tarea tipo "Pipeline", que nos permitirá definir todas las etapas desde el código.
+
+![CrearPipeline](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/7-CrearPipeline.PNG)
+
+Paso 2: Crear un token personal (PAT) para GitHub
+
+Para que Jenkins pueda acceder al repositorio privado de GitHub, creamos un token personal desde la configuración de GitHub. Este token debe tener permisos sobre repo y workflow.
+
+![TokenGitHub](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/8-TokenGitHub.PNG)
+
+Paso 3: Asociar el token en Jenkins como credencial
+
+Una vez generado el token, se añade en Jenkins desde Administrar Jenkins > Credenciales > Global. Se selecciona el tipo Username with password y se introduce el nombre de usuario de GitHub y el token como contraseña.
+
+![Insertar Token](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/9-PonerToken.PNG)
+
+Paso 4: Configurar la tarea con SCM y script path
+
+En la configuración del proyecto, indicamos la URL del repositorio y seleccionamos la credencial previamente añadida. También se define la rama a utilizar (main) y se deja activado el uso de Jenkinsfile por defecto.
+
+![Configuracion pipeline](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/10-Configuracion.PNG)
+
+Paso 5: Visualización de la pipeline ejecutándose
+
+Una vez lanzada la pipeline, Jenkins representa gráficamente la ejecución de cada etapa. Si alguna falla, se marca con una cruz. En este ejemplo se ve el proceso completo: desde el checkout hasta la ejecución de Docker Compose.
+
+![Error](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/11-Error.PNG)
+
+---
+
 ## 🔬 Tests
 
 Los tests unitarios están implementados con `unittest` y verifican el método de multiplicación de la clase `Calculadora`.
@@ -117,10 +152,3 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(calc.multiplicar(2, 6), 12)
         self.assertEqual(calc.multiplicar(0, 10), 0)
 ```
-
----
-
-## 📌 Pendiente en próximos pasos
-
-* Crear y probar el `jenkinsfile.docker` (con stages Docker + Docker Compose)
-* Añadir más pruebas o pasos de despliegue
