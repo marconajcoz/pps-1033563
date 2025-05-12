@@ -133,6 +133,12 @@ Una vez lanzada la pipeline, Jenkins representa gráficamente la ejecución de c
 
 ![Error](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/11-Error.PNG)
 
+Como podemos ver, la pipeline no conecta con GitHub. Si que llega a leer el jenkinsfile de manera correcta, porque como podemos ver se crea la pipeline. Sin embargo, no he conseguido hacerlo funcional debido al siguinte error.
+
+![Output](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/12-Output.PNG)
+
+Aunque no se ha llegado a una solución completa debido a que supuestamente Git no está descargado en el Dockerfile (que como podemos ver realmente sí está), todos los archivos son visibles en la carpeta Assets de este proyecto, y considero que debería funcionar en caso de no diese errores de Git.
+
 ---
 
 ## 🔬 Tests
