@@ -1,0 +1,5 @@
+version: '3'
+services:
+  calculadora:
+    build: .
+    container_name: calculadora_test
