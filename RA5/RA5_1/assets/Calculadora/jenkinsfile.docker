@@ -1,37 +1,39 @@
 pipeline {
-    agent {
-        docker { image 'python:3.11' }
-    }
+    agent any
+
     stages {
-        stage('Clonar repo') {
-            steps {
-                git 'https://github.com/marconajcoz/pps-1033563.git'
-            }
-        }
-        stage('Ejecutar tests en Docker') {
-            steps {
-                dir('RA5/RA5_1/assets/Calculadora') {
-                    sh 'python -m unittest test_calculadora.py'
+        stage('Pipeline en Docker') {
+            agent {
+                docker {
+                    image 'python:3.11'
                 }
             }
+            steps {
+                sh 'python3 -m unittest test_calculadora.py'
+            }
         }
+
         stage('Crear imagen Docker') {
             steps {
-                dir('RA5/RA5_1/assets/Calculadora') {
-                    sh 'docker build -t calculadora-python .'
-                }
+                sh 'docker build -t calculadora-python .'
             }
         }
-        stage('Ejecutar contenedor') {
+
+        stage('Ejecutar contenedor Docker') {
             steps {
                 sh 'docker run --rm calculadora-python'
             }
         }
-        stage('Ejecutar con docker-compose') {
+
+        stage('Tests dentro de Docker') {
             steps {
-                dir('RA5/RA5_1/assets/Calculadora') {
-                    sh 'docker-compose up --abort-on-container-exit'
-                }
+                sh 'docker run --rm calculadora-python python3 -m unittest test_calculadora.py'
+            }
+        }
+
+        stage('Ejecutar docker-compose') {
+            steps {
+                sh 'docker-compose up --abort-on-container-exit'
             }
         }
     }
