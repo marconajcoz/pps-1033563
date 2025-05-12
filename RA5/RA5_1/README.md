@@ -23,11 +23,25 @@ RA5_1/
 
 ---
 
+## 📊 Implementación de la Calculadora en Python
+
+El proyecto comienza con la creación de un script en Python que implementa una clase `Calculadora` con un método `multiplicar`. Esta clase se prueba desde la línea de comandos y mediante pruebas unitarias.
+
+A continuación se muestra el código fuente funcional:
+
+![Código Python](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/1-Calculadora.PNG)
+
+Para garantizar que el código funciona correctamente, se han creado pruebas automáticas con `unittest`, como se observa en la siguiente imagen:
+
+![Unittest funcionando](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/2-UniTest.PNG)
+
+---
+
 ## ⚙️ Jenkinsfile
 
 Se define una pipeline de Jenkins que clona el repositorio y ejecuta los tests unitarios con `unittest`.
 
-### Ejemplo de pipeline (también presente en los assets):
+### Ejemplo de pipeline:
 
 ```groovy
 pipeline {
@@ -54,31 +68,35 @@ pipeline {
 
 ---
 
-## 📷 Capturas de la práctica
+## 🚣 Jenkins con Docker
 
-### ✅ Código funcional de la calculadora
+Para facilitar la configuración del entorno de integración continua, se ha optado por levantar Jenkins mediante Docker.
 
-![Código Python](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/1-Calculadora.PNG)
+Primero, se ejecuta el siguiente comando:
 
-### ✅ Pruebas unitarias ejecutándose correctamente
+```bash
+docker-compose up -d
+```
 
-![Unittest funcionando](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/2-UniTest.PNG)
-
-### ✅ Jenkins en ejecución vía Docker
-
-![Jenkins activo](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/6-JenkinsActivo.PNG)
-
-### ✅ Docker Compose levantando Jenkins
+Esto lanza Jenkins en `http://localhost:8080`:
 
 ![Jenkins con Docker](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/3-PuestaEnMarcha.PNG)
 
-### ✅ Contraseña inicial obtenida del contenedor
+Una vez que el contenedor está en marcha, se recupera la contraseña inicial con:
+
+```bash
+docker exec -it jenkins_jenkins_1 cat /var/jenkins_home/secrets/initialAdminPassword
+```
 
 ![Contraseña inicial Jenkins](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/4-ContraseñaTemporal.PNG)
 
-### ✅ Plugins recomendados en instalación
+Tras introducirla en el navegador, Jenkins solicita crear el primer usuario administrador e instalar los plugins recomendados:
 
 ![Plugins Jenkins](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/5-InstalarPlugins.PNG)
+
+Finalmente, accedemos al panel de Jenkins ya funcional:
+
+![Jenkins activo](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/6-JenkinsActivo.PNG)
 
 ---
 
@@ -98,22 +116,6 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(calc.multiplicar(3, 4), 12)
         self.assertEqual(calc.multiplicar(2, 6), 12)
         self.assertEqual(calc.multiplicar(0, 10), 0)
-```
-
----
-
-## 🚣 Jenkins con Docker
-
-Para levantar Jenkins de forma local:
-
-```bash
-docker-compose up -d
-```
-
-Esto lanza Jenkins en `http://localhost:8080`. La contraseña inicial se extrae con:
-
-```bash
-docker exec -it jenkins_jenkins_1 cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 ---
