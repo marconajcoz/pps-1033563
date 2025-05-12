@@ -2,15 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Pipeline en Docker') {
-            agent {
-                docker {
-                    image 'python:3.11'
-                }
-            }
+        stage('Test en imagen local Python') {
             steps {
                 dir('RA5/RA5_1/assets/Calculadora') {
-                    sh 'python3 -m unittest test_calculadora.py'
+                    sh 'docker run --rm -v "$PWD":/app -w /app python:3.11 python3 -m unittest test_calculadora.py'
                 }
             }
         }
