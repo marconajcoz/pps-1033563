@@ -37,7 +37,7 @@ pipeline {
         stage('Ejecutar docker-compose') {
             steps {
                 dir('RA5/RA5_1/assets/Calculadora') {
-                    sh 'docker-compose up --abort-on-container-exit'
+                    sh 'docker-compose up --abort-on-container-exit --exit-code-from calculadora'
                 }
             }
         }
