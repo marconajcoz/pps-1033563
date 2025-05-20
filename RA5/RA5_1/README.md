@@ -145,7 +145,7 @@ Dado que la integración mediante contenedores Docker presentaba problemas de vi
 
 Se ha seguido el procedimiento oficial de Jenkins para instalar el servidor de integración continua desde repositorio en una distribución Debian-based:
 
-![Instalacion local](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/13-VueltaEmmpezarCertificados.PNG)
+![Instalacion local](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/13-VueltaEmpezarCertificados.PNG)
 
 ✅ Jenkins funcionando correctamente
 
