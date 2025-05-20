@@ -137,24 +137,36 @@ Como podemos ver, la pipeline no conecta con GitHub. Si que llega a leer el jenk
 
 ![Output](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/12-Output.PNG)
 
-Aunque no se ha llegado a una solución completa debido a que supuestamente Git no está descargado en el Dockerfile (que como podemos ver realmente sí está), todos los archivos son visibles en la carpeta Assets de este proyecto, y considero que debería funcionar en caso de no diese errores de Git.
-
 ---
 
-## 🔬 Tests
+Dado que la integración mediante contenedores Docker presentaba problemas de vietualización, se ha optado por eliminar la instalación anterior y realizar una nueva instalación de Jenkins de forma local en Linux Mint.
 
-Los tests unitarios están implementados con `unittest` y verifican el método de multiplicación de la clase `Calculadora`.
+🔁 Instalación local de Jenkins
 
-### `test_calculadora.py` (fragmento):
+Se ha seguido el procedimiento oficial de Jenkins para instalar el servidor de integración continua desde repositorio en una distribución Debian-based:
 
-```python
-import unittest
-from calculadora import Calculadora
+![Instalacion local](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/13-VueltaEmmpezarCertificados.PNG)
 
-class TestCalculadora(unittest.TestCase):
-    def test_multiplicacion(self):
-        calc = Calculadora()
-        self.assertEqual(calc.multiplicar(3, 4), 12)
-        self.assertEqual(calc.multiplicar(2, 6), 12)
-        self.assertEqual(calc.multiplicar(0, 10), 0)
-```
+✅ Jenkins funcionando correctamente
+
+Una vez instalada, Jenkins se inicia correctamente como servicio del sistema:
+
+![Jenkins funciona](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/14-JenkinsFunciona.PNG)
+
+Y desde el navegador se accede a Jenkins para introducir la contraseña inicial:
+
+![Primer acceso](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/15-PrimerAcceso.PNG)
+
+🧱 Configuración de la nueva pipeline en interfaz gráfica
+
+Se ha configurado la pipeline mediante la opción Pipeline script from SCM, apuntando al repositorio en GitHub y seleccionando el Jenkinsfile correspondiente.
+
+![Configuracion Pipeline](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/16-COnfiguracionPipeline.PNG)
+
+🚦 Pipeline completa funcionando
+
+Finalmente, se lanza la ejecución de la nueva pipeline, la cual ahora funciona correctamente y ejecuta todos los stages definidos en jenkinsfile.docker, incluidos los test con Docker y el uso de docker-compose.
+
+![Pipeline funciona](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/17-PipelineFunciona.PNG)
+
+Este proceso asegura la funcionalidad de Jenkins sin depender de contenedores y evitando los problemas de permisos que anteriormente impedían que Docker funcionase dentro del contenedor Jenkins.
