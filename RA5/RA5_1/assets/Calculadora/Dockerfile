@@ -1,14 +1,7 @@
-FROM jenkins/jenkins:lts
-
-USER root
-
-RUN apt-get update && apt-get install -y \
-    git \
-    python3 \
-    curl \
-    unzip \
-    docker.io
+FROM python:3.11-slim
 
 WORKDIR /app
 
-USER jenkins
+COPY calculadora.py test_calculadora.py ./
+
+CMD ["python3", "-m", "unittest", "test_calculadora.py"]
