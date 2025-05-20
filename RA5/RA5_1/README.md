@@ -169,4 +169,4 @@ Finalmente, se lanza la ejecución de la nueva pipeline, la cual ahora funciona 
 
 ![Pipeline funciona](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/17-PipelineFunciona.PNG)
 
-Este proceso asegura la funcionalidad de Jenkins sin depender de contenedores y evitando los problemas de permisos que anteriormente impedían que Docker funcionase dentro del contenedor Jenkins.
+Este proceso asegura la funcionalidad de Jenkins sin depender de contenedores y evitando los problemas de permisos que anteriormente impedían que Docker funcionase dentro del contenedor Jenkins. Todos los archivos usados para que esto funcione se encuentran en la carpeta de assets/calculadora de este mismo subdirectorio RA5_1, como podemos ver al principio del readme con la estructura de archivos.
