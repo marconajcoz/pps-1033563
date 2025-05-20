@@ -141,13 +141,13 @@ Como podemos ver, la pipeline no conecta con GitHub. Si que llega a leer el jenk
 
 Dado que la integración mediante contenedores Docker presentaba problemas de vietualización, se ha optado por eliminar la instalación anterior y realizar una nueva instalación de Jenkins de forma local en Linux Mint.
 
-🔁 Instalación local de Jenkins
+## 🔁 Instalación local de Jenkins
 
 Se ha seguido el procedimiento oficial de Jenkins para instalar el servidor de integración continua desde repositorio en una distribución Debian-based:
 
 ![Instalacion local](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/13-VueltaEmpezarCertificados.PNG)
 
-✅ Jenkins funcionando correctamente
+## ✅ Jenkins funcionando correctamente
 
 Una vez instalada, Jenkins se inicia correctamente como servicio del sistema:
 
@@ -157,13 +157,13 @@ Y desde el navegador se accede a Jenkins para introducir la contraseña inicial:
 
 ![Primer acceso](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/15-PrimerAcceso.PNG)
 
-🧱 Configuración de la nueva pipeline en interfaz gráfica
+## 🧱 Configuración de la nueva pipeline en interfaz gráfica
 
 Se ha configurado la pipeline mediante la opción Pipeline script from SCM, apuntando al repositorio en GitHub y seleccionando el Jenkinsfile correspondiente.
 
 ![Configuracion Pipeline](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_1/assets/Imagenes/16-COnfiguracionPipeline.PNG)
 
-🚦 Pipeline completa funcionando
+## 🚦 Pipeline completa funcionando
 
 Finalmente, se lanza la ejecución de la nueva pipeline, la cual ahora funciona correctamente y ejecuta todos los stages definidos en jenkinsfile.docker, incluidos los test con Docker y el uso de docker-compose.
 
