@@ -4,4 +4,4 @@ services:
   calculadora:
     build: .
     container_name: calculadora-compose
-    command: tail -f /dev/null
+    command: python3 -m unittest test_calculadora.py
