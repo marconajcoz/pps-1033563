@@ -28,9 +28,9 @@ TerraformAnsible/
 
 Aquí estan los archivos que se han creado para realizar la práctica:
 
-- [`main.tf`](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_2/assets/code/main.tf) – Configuración de Terraform que ejecuta `vagrant up --provision`.
-- [`Vagrantfile`](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_2/assets/code/vagrantfile) – Define la máquina virtual, instala Ansible y ejecuta el playbook.
-- [`playbook.yml`](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_2/assets/code/playbook.yml) – Automatiza la instalación y verificación del servidor web Apache.
+- [`main.tf`](https://github.com/marconajcoz/pps-1033563/blob/main/RA5/RA5_2/assets/code/Vagrantfile) – Configuración de Terraform que ejecuta `vagrant up --provision`.
+- [`Vagrantfile`](https://github.com/marconajcoz/pps-1033563/blob/main/RA5/RA5_2/assets/code/vagrantfile) – Define la máquina virtual, instala Ansible y ejecuta el playbook.
+- [`playbook.yml`](https://github.com/marconajcoz/pps-1033563/blob/main/RA5/RA5_2/assets/code/playbook.yml) – Automatiza la instalación y verificación del servidor web Apache.
 
 ---
 
