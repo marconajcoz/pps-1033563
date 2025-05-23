@@ -30,12 +30,16 @@ El RA5 Incluye lo siguiente:
 ```
 .
 ├── RA5
-│   ├── RA5_1: Jenkins
-│   │   ├── assets
-│   │   └── README.md
-│   └─ RA5_2: Terraform y Ansible
+│   ├── RA5_1: Jenkins
+│   │   ├── assets
+│   │   │   ├── Calculadora
+│   │   │   └── Imagenes
+│   │   └── README.md
+│   └── RA5_2: Terraform y Ansible
 │       ├── assets
-│       └── README.md
+│       │   ├── images
+│       │   └── code
+│       └── README.md
 └── README.md
 
 ```
