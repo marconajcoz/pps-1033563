@@ -1,0 +1,36 @@
+- name: Configurar Apache automáticamente
+  hosts: all
+  connection: local
+  become: yes
+
+  tasks:
+    - name: Actualizar caché de APT y realizar upgrade
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Instalar Apache
+      apt:
+        name: apache2
+        state: present
+
+    - name: Crear archivo index.html
+      copy:
+        dest: /var/www/html/index.html
+        content: "Ansible rocks"
+        owner: www-data
+        group: www-data
+        mode: '0644'
+
+    - name: Reiniciar Apache
+      service:
+        name: apache2
+        state: restarted
+
+    - name: Verificar que Apache devuelve el contenido correcto
+      shell: curl -s http://localhost
+      register: resultado
+
+    - name: Mostrar salida del curl
+      debug:
+        var: resultado.stdout
