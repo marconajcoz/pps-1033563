@@ -71,7 +71,7 @@ Para comprobar que las métricas del uServer están siendo expuestas correctamen
 
 http://192.168.1.85:9100/metrics
 
-Esto confirma que el Node Exporter está activo y sirviendo métricas en la red local, lo cual es esencial para que Prometheus las recopile.
+Esto confirma que el Node Exporter está activo y sirviendo métricas en la red local, lo cual es esencial para que Prometheus las recopile gracias a la configuración con el archivo que se encuentra en /assets/code de este repositorio, el [prometheus.yml](https://github.com/marconajcoz/pps-1033563/blob/main/RA5/RA5_3/assets/code/prometheus.yml).
 
 ### 📸 Imagen del navegador mostrando las métricas:
 
@@ -97,7 +97,7 @@ Uso de CPU 🧠
 
 Uso de memoria 💾
 
-Esto proporciona una visualización clara y en tiempo real del rendimiento del servidor monitorizado remotamente, gracias a la configuración con el archivo que se encuentra en /assets/code de este repositorio, el [prometheus.yml](https://github.com/marconajcoz/pps-1033563/blob/main/RA5/RA5_3/assets/code/prometheus.yml).
+Esto proporciona una visualización clara y en tiempo real del rendimiento del servidor monitorizado remotamente.
 
 ### 📸 Imagen del Dashboard en funcionamiento:
 
