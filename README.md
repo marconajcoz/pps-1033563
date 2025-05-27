@@ -44,7 +44,8 @@ El RA5 Incluye lo siguiente:
 │   │   └── README.md
 │   ├── RA5_3: Grafana y Prometheus
 │   │   ├── assets
-│   │   │   └─ images
+│   │   │   ├─ images
+│   │   │   └─ code
 │   │   └── README.md
 │   └─ RA5_4: K3S y K9S
 └── README.md
