@@ -103,6 +103,6 @@ Esto proporciona una visualización clara y en tiempo real del rendimiento del s
 
 ![Dashboard](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/10-Monitorización.PNG)
 
-✅ Conclusión y objetivos alcanzados 🎯
+## ✅ Conclusión y objetivos alcanzados 🎯
 
 Gracias al uso de Docker y las herramientas de monitorización (Prometheus, Grafana y Node Exporter), se logró crear un entorno funcional y escalable para observar el estado de un servidor remoto (uServer) desde otro equipo (Linux Mint) de forma gráfica y eficiente. 🧑‍💻
