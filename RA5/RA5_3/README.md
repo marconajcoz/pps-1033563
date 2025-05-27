@@ -1,24 +1,24 @@
-#📦 Práctica: Monitorización de un Servidor Linux con Grafana y Prometheus vía Docker 🐳
+# 📦 Práctica: Monitorización de un Servidor Linux con Grafana y Prometheus vía Docker 🐳
 
 Esta práctica consiste en desplegar un sistema de monitorización completo utilizando Docker, Prometheus, Node Exporter, cAdvisor y Grafana. El objetivo es visualizar métricas del sistema Ubuntu Server desde un contenedor de Grafana alojado en otra máquina Linux Mint. Ideal para entornos de red segmentados donde el análisis y la observabilidad son claves para la gestión proactiva del sistema. 📊
 
-##1️⃣ Clonado del repositorio de GitHub 🧬
+## 1️⃣ Clonado del repositorio de GitHub 🧬
 
 Se comienza clonando un repositorio de GitHub que contiene un docker-compose.yml preparado con las configuraciones necesarias para levantar los servicios de monitorización: Prometheus, cAdvisor y Grafana.
 
-📸 Imagen del clonado del repositorio:
+### 📸 Imagen del clonado del repositorio:
 
-[Inserta aquí la imagen del clonado]
+![Clonar Git](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/1-ClonarGitHub.PNG)
 
-##2️⃣ Construcción del contenedor Docker 🛠️
+## 2️⃣ Construcción del contenedor Docker 🛠️
 
 Una vez clonado el repositorio, se realiza el docker build para construir las imágenes personalizadas que usaremos. En este punto Docker descarga todas las dependencias necesarias y configura el entorno.
 
-📸 Imagen del proceso de docker build:
+### 📸 Imagen del proceso de docker build:
 
 [Inserta aquí la imagen de la consola con docker build]
 
-##3️⃣ Levantar los servicios con Docker Compose 🚀
+## 3️⃣ Levantar los servicios con Docker Compose 🚀
 
 Con las imágenes listas, se ejecuta docker-compose up -d para lanzar los contenedores en segundo plano. Esto inicia automáticamente:
 
@@ -28,11 +28,11 @@ cAdvisor (para ver métricas de contenedores 🐳)
 
 Grafana (para visualizar los datos 📊)
 
-📸 Imagen de ejecución del comando docker-compose up -d:
+### 📸 Imagen de ejecución del comando docker-compose up -d:
 
 [Inserta aquí la imagen del terminal ejecutando docker-compose]
 
-##4️⃣, 5️⃣ y 6️⃣ Acceso a los servicios desde el navegador 🌐
+## 4️⃣, 5️⃣ y 6️⃣ Acceso a los servicios desde el navegador 🌐
 
 Se accede desde un navegador web a los siguientes puertos:
 
@@ -44,7 +44,7 @@ Grafana: http://localhost:3000
 
 Esto permite verificar que los tres servicios están funcionando correctamente en sus respectivas interfaces web.
 
-📸 Capturas de:
+### 📸 Capturas de:
 
 Prometheus ✅
 
@@ -54,17 +54,17 @@ Grafana ✅
 
 [Inserta aquí las tres imágenes]
 
-##7️⃣ Verificación de Prometheus en el Ubuntu Server (uServer) 🖥️
+## 7️⃣ Verificación de Prometheus en el Ubuntu Server (uServer) 🖥️
 
 En el servidor Ubuntu, también llamado uServer, se instala Prometheus y Node Exporter. Se comprueba su correcto funcionamiento con el comando:
 
 sudo systemctl status prometheus
 
-📸 Imagen del estado activo de Prometheus:
+### 📸 Imagen del estado activo de Prometheus:
 
 [Inserta aquí la imagen de status prometheus en uServer]
 
-##8️⃣ Acceso remoto a Node Exporter 🌍
+## 8️⃣ Acceso remoto a Node Exporter 🌍
 
 Para comprobar que las métricas del uServer están siendo expuestas correctamente, se accede a:
 
@@ -72,11 +72,11 @@ http://192.168.1.85:9100/metrics
 
 Esto confirma que el Node Exporter está activo y sirviendo métricas en la red local, lo cual es esencial para que Prometheus las recopile.
 
-📸 Imagen del navegador mostrando las métricas:
+### 📸 Imagen del navegador mostrando las métricas:
 
 [Inserta aquí la imagen del navegador accediendo a Node Exporter]
 
-##9️⃣ Configuración del Data Source en Grafana 📡
+## 9️⃣ Configuración del Data Source en Grafana 📡
 
 Desde el Grafana instalado en el contenedor Docker (corriendo en Linux Mint), se crea una nueva fuente de datos (Data Source) del tipo Prometheus apuntando a la IP del uServer:
 
@@ -84,11 +84,11 @@ http://192.168.1.85:9090
 
 Esta configuración permite que Grafana lea los datos expuestos por Prometheus en el Ubuntu Server remoto.
 
-📸 Imagen de configuración del Data Source en Grafana:
+### 📸 Imagen de configuración del Data Source en Grafana:
 
 [Inserta aquí la imagen de la creación de la fuente de datos]
 
-##🔟 Creación del Dashboard en Grafana 📈
+## 🔟 Creación del Dashboard en Grafana 📈
 
 Se crea un Dashboard personalizado en Grafana con múltiples paneles que muestran información sobre el estado del sistema uServer, tales como:
 
@@ -98,7 +98,7 @@ Uso de memoria 💾
 
 Esto proporciona una visualización clara y en tiempo real del rendimiento del servidor monitorizado remotamente.
 
-📸 Imagen del Dashboard en funcionamiento:
+### 📸 Imagen del Dashboard en funcionamiento:
 
 [Inserta aquí la imagen del Dashboard mostrando métricas]
 
