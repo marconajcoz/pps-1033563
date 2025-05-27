@@ -16,7 +16,7 @@ Una vez clonado el repositorio, se realiza el docker build para construir las im
 
 ### 📸 Imagen del proceso de docker build:
 
-[Inserta aquí la imagen de la consola con docker build]
+![Docker Build](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/2-BuildDocker.PNG)
 
 ## 3️⃣ Levantar los servicios con Docker Compose 🚀
 
@@ -30,7 +30,7 @@ Grafana (para visualizar los datos 📊)
 
 ### 📸 Imagen de ejecución del comando docker-compose up -d:
 
-[Inserta aquí la imagen del terminal ejecutando docker-compose]
+![Docker up](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/3-LevantarServicios.PNG)
 
 ## 4️⃣, 5️⃣ y 6️⃣ Acceso a los servicios desde el navegador 🌐
 
@@ -47,22 +47,23 @@ Esto permite verificar que los tres servicios están funcionando correctamente e
 ### 📸 Capturas de:
 
 Prometheus ✅
+![Prometheus](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/4-Prometheus.PNG)
 
 cAdvisor ✅
+![cAdvisor](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/5-cAdvisor.PNG)
 
 Grafana ✅
-
-[Inserta aquí las tres imágenes]
+![Grafana](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/6-Grafana.PNG)
 
 ## 7️⃣ Verificación de Prometheus en el Ubuntu Server (uServer) 🖥️
 
-En el servidor Ubuntu, también llamado uServer, se instala Prometheus y Node Exporter. Se comprueba su correcto funcionamiento con el comando:
+En el servidor Ubuntu, también llamado uServer, se instala manualmente Prometheus y Node Exporter. Se comprueba su correcto funcionamiento con el comando:
 
 sudo systemctl status prometheus
 
 ### 📸 Imagen del estado activo de Prometheus:
 
-[Inserta aquí la imagen de status prometheus en uServer]
+![Prometeus UServer](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/7-PrometheusFuncionaEnUServer.PNG)
 
 ## 8️⃣ Acceso remoto a Node Exporter 🌍
 
@@ -74,7 +75,7 @@ Esto confirma que el Node Exporter está activo y sirviendo métricas en la red 
 
 ### 📸 Imagen del navegador mostrando las métricas:
 
-[Inserta aquí la imagen del navegador accediendo a Node Exporter]
+![Node Exporter](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/8-MetricasUServer.PNG)
 
 ## 9️⃣ Configuración del Data Source en Grafana 📡
 
@@ -86,7 +87,7 @@ Esta configuración permite que Grafana lea los datos expuestos por Prometheus e
 
 ### 📸 Imagen de configuración del Data Source en Grafana:
 
-[Inserta aquí la imagen de la creación de la fuente de datos]
+![Data Source](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/9-DataSourceHecho.PNG)
 
 ## 🔟 Creación del Dashboard en Grafana 📈
 
@@ -100,7 +101,7 @@ Esto proporciona una visualización clara y en tiempo real del rendimiento del s
 
 ### 📸 Imagen del Dashboard en funcionamiento:
 
-[Inserta aquí la imagen del Dashboard mostrando métricas]
+![Dashboard](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_3/assets/images/10-Monitorización.PNG)
 
 ✅ Conclusión y objetivos alcanzados 🎯
 
