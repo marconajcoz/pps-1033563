@@ -97,7 +97,7 @@ Uso de CPU 🧠
 
 Uso de memoria 💾
 
-Esto proporciona una visualización clara y en tiempo real del rendimiento del servidor monitorizado remotamente.
+Esto proporciona una visualización clara y en tiempo real del rendimiento del servidor monitorizado remotamente, gracias a la configuración con el archivo que se encuentra en /assets/code de este repositorio, el [prometheus.yml](https://github.com/marconajcoz/pps-1033563/blob/main/RA5/RA5_3/assets/code/prometheus.yml).
 
 ### 📸 Imagen del Dashboard en funcionamiento:
 
