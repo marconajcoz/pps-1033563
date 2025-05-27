@@ -26,6 +26,7 @@ El RA5 Incluye lo siguiente:
 
 * [RA5_1](https://github.com/marconajcoz/pps-1033563/tree/main/RA5/RA5_1): Jenkins
 * [RA5_2](https://github.com/marconajcoz/pps-1033563/tree/main/RA5/RA5_2): Terraform & Ansible
+* [RA5_3](https://github.com/marconajcoz/pps-1033563/tree/main/RA5/RA5_3): Grafana y Prometheus
 
 ```
 .
