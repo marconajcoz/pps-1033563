@@ -1,4 +1,4 @@
-# Instalación y Despliegue de K3s en Linux Mint (Modo Single-Node) 🚀🐧
+# Instalación y Despliegue de K3s y visión con K9S (Modo Single-Node) 🚀🐧
 
 En esta guía vamos a instalar **K3s**, una versión ligera y simplificada de Kubernetes, en modo *single-node* sobre Linux Mint. Después desplegaremos un servicio NGINX con dos réplicas y validaremos todo con la herramienta visual **K9s**, que facilita la gestión de clústeres Kubernetes desde la terminal.
 
@@ -9,9 +9,8 @@ En esta guía vamos a instalar **K3s**, una versión ligera y simplificada de Ku
 Para instalar K3s utilizamos el script oficial proporcionado por Rancher Labs. Este script descarga e instala el binario, configura los servicios necesarios y levanta el clúster automáticamente. De esta forma, evitamos pasos manuales complejos y conseguimos un clúster Kubernetes funcional en pocos minutos.
 
 ---
-
-*Aquí inserta la imagen del resultado del comando de instalación*  
-![Instalación de K3s](ruta/a/tu/imagen1.png)
+ 
+![K3S](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/1-InstalarK3S.PNG)
 
 ---
 
