@@ -48,6 +48,9 @@ El RA5 Incluye lo siguiente:
 │   │   │   └── code
 │   │   └── README.md
 │   └─ RA5_4: K3S y K9S
+│       ├── assets
+│       │   └── images
+│       └── README.md
 └── README.md
 
 ```
