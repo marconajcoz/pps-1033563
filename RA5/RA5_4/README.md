@@ -20,8 +20,7 @@ Una vez instalado, comprobamos que el servicio de K3s esté corriendo correctame
 
 ---
 
-*Aquí inserta la imagen del estado del servicio K3s*  
-![Estado del servicio K3s](ruta/a/tu/imagen2.png)
+![K3S Status](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/2-StatusK3S.PNG)
 
 ---
 
@@ -33,8 +32,7 @@ Por ejemplo, para listar los nodos y verificar que nuestro nodo está en estado 
 
 ---
 
-*Aquí inserta la imagen con el listado de nodos*  
-![Listado de nodos](ruta/a/tu/imagen3.png)
+![K3S Nodos](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/3-NodoListo.PNG)
 
 ---
 
@@ -50,8 +48,7 @@ Luego aplicamos esta configuración para que Kubernetes cree los pods y el servi
 
 ---
 
-*Aquí inserta la imagen tras aplicar el despliegue*  
-![Aplicar despliegue](ruta/a/tu/imagen4.png)
+![Nginx Deploy](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/4-AplicarNginxDeploy.PNG)
 
 ---
 
