@@ -42,7 +42,7 @@ Opcionalmente, podemos configurar el entorno para usar `kubectl` sin necesidad d
 
 ## 4. Despliegue de un servicio NGINX con dos réplicas 🐳
 
-Para probar el clúster, creamos un archivo YAML que define un despliegue de NGINX con dos réplicas y un servicio tipo LoadBalancer para exponerlo. Este despliegue hará que dos contenedores NGINX estén corriendo en paralelo dentro del clúster.
+Para probar el clúster, creamos un archivo [YAML que define un despliegue de NGINX](https://github.com/marconajcoz/pps-1033563/blob/main/RA5/RA5_4/assets/code/nginx-deployment.yaml) accesible en /assets/code de este repositorio con dos réplicas y un servicio tipo LoadBalancer para exponerlo. Este despliegue hará que dos contenedores NGINX estén corriendo en paralelo dentro del clúster.
 
 Luego aplicamos esta configuración para que Kubernetes cree los pods y el servicio.
 
@@ -58,11 +58,7 @@ Es fundamental verificar que los pods se estén ejecutando correctamente y que e
 
 ---
 
-*Aquí inserta la imagen con el listado de pods*  
-![Listado de Pods](ruta/a/tu/imagen5.png)
-
-*Aquí inserta la imagen con el listado de servicios*  
-![Listado de Servicios](ruta/a/tu/imagen6.png)
+![Pods K3S](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/5-ComprobarNodos.PNG)
 
 ---
 
@@ -74,8 +70,7 @@ Una vez instalado, simplemente lanzamos `k9s` y podremos navegar por todos los r
 
 ---
 
-*Aquí inserta la imagen de K9s en funcionamiento*  
-![Interfaz de K9s](ruta/a/tu/imagen7.png)
+![K9S Funciona](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/7-NodosDesdeK9S.PNG)
 
 ---
 
