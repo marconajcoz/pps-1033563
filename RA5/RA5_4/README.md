@@ -1,4 +1,4 @@
-# Instalación y Despliegue de K3s y visión con K9S (Modo Single-Node) 🚀🐧
+# 5.1 Instalación y Despliegue de K3s y visión con K9S (Modo Single-Node) 🚀🐧
 
 En esta guía vamos a instalar **K3s**, una versión ligera y simplificada de Kubernetes, en modo *single-node* sobre Linux Mint. Después desplegaremos un servicio NGINX con dos réplicas y validaremos todo con la herramienta visual **K9s**, que facilita la gestión de clústeres Kubernetes desde la terminal.
 
@@ -75,3 +75,51 @@ Una vez instalado, simplemente lanzamos `k9s` y podremos navegar por todos los r
 ---
 
 Con estos pasos tendrás un clúster K3s operativo en modo single-node, un servicio NGINX desplegado con réplicas y una forma eficiente de gestionar todo a través de K9s.
+
+# 5.2 Instalación y Despliegue de K3s y visión con K9S (Modo HA) 🚀🐧
+
+## 🚀 Introducción
+
+Kubernetes es una plataforma de orquestación de contenedores que automatiza la implementación, escalado y gestión de aplicaciones en contenedores. Una de sus capacidades más importantes es la alta disponibilidad (HA), que permite mantener las aplicaciones funcionando incluso si uno o varios nodos del clúster fallan.
+
+En esta práctica se ha desplegado un clúster Kubernetes en alta disponibilidad usando K3s, una distribución ligera y certificada de Kubernetes diseñada para entornos con recursos limitados, pero con todas las funcionalidades esenciales.
+
+## 💻 Entorno utilizado
+
+Se han empleado tres servidores con Ubuntu Server 24.04, configurados para formar un clúster K3s en alta disponibilidad. Los nodos se identifican como master1k3s, master2k3s y master3k3s.  
+
+Cada nodo está configurado para que el primero (master1k3s) actúe como nodo principal (control-plane), y los otros dos se unan al clúster utilizando el token generado por el primero.
+
+---
+
+## 🛠️ Pasos realizados
+
+### 1️⃣ Instalación en master1k3s y obtención del token
+
+En el nodo master1k3s se instaló K3s como nodo principal. Tras la instalación, se extrajo el token necesario para que los demás nodos puedan unirse al clúster con alta disponibilidad. Este token permite autenticar y conectar de forma segura los nodos adicionales.
+
+### 2️⃣ Instalación en master2k3s y master3k3s con referencia al token de master1k3s
+
+En los nodos master2k3s y master3k3s se instaló K3s como nodos adicionales, especificando durante la instalación el token obtenido de master1k3s y la IP del nodo principal. Esto hizo posible la unión de los nodos al clúster, configurando así un entorno con múltiples nodos que ofrecen resiliencia y balanceo de carga para los componentes de control.
+
+### 3️⃣ Verificación del clúster con `kubectl get nodes`
+
+Desde cualquiera de los nodos con la configuración correcta del fichero kubeconfig, se ejecutó el comando para listar los nodos del clúster. Se pudo comprobar que los tres nodos aparecen como listos (`Ready`), donde master1k3s figura con el rol de `control-plane,etcd,master` y master2k3s y master3k3s aparecen con estado listo pero sin roles explícitos de control-plane, lo cual es correcto para un clúster K3s configurado para HA.
+
+### 4️⃣ Creación y despliegue de nginx-deployment
+
+Se creó un fichero [nginx-deployment.yaml](https://github.com/marconajcoz/pps-1033563/blob/main/RA5/RA5_4/assets/code/nginx-deployment.yaml) que define un despliegue con varias réplicas del servidor web Nginx. Con el comando `kubectl apply -f nginx-deployment.yaml` se aplicó esta configuración al clúster, creando el deployment y el servicio asociado.
+
+### 5️⃣ Comprobación de los pods y servicios
+
+Se verificó que los pods del despliegue de Nginx se estaban ejecutando correctamente usando `kubectl get pods`. Se observaron dos réplicas, ambas en estado `Running`, distribuidas en dos nodos distintos (master2k3s y master3k3s). Esto indica que el clúster está gestionando el despliegue de forma distribuida.
+
+El servicio asociado se creó como tipo `LoadBalancer` con un puerto expuesto, aunque en un entorno local el EXTERNAL-IP aparece como `<pending>`, esto es esperado si no hay un controlador externo que asigne IPs públicas.
+
+### 6️⃣ Prueba de acceso con curl a Nginx
+
+Se realizó una consulta HTTP directa al puerto del servicio expuesto (por ejemplo, en la IP 192.168.1.121 con puerto 31002), y se recibió la página estándar de bienvenida de Nginx. Esto confirma que el servidor web está corriendo correctamente dentro del clúster y es accesible desde la red.
+
+### 7️⃣ Monitorización visual con K9s
+
+Finalmente, se utilizó la herramienta K9s para visualizar el estado del clúster de manera interactiva. En K9s se pudieron observar los pods desplegados, sus estados, nodos en los que se ejecutan, consumo de recursos y más. La visualización confirma que las réplicas de nginx están distribuidas en nodos diferentes, reforzando la arquitectura de alta disponibilidad.
