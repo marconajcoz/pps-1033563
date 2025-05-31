@@ -98,17 +98,27 @@ Cada nodo está configurado para que el primero (master1k3s) actúe como nodo pr
 
 En el nodo master1k3s se instaló K3s como nodo principal. Tras la instalación, se extrajo el token necesario para que los demás nodos puedan unirse al clúster con alta disponibilidad. Este token permite autenticar y conectar de forma segura los nodos adicionales.
 
+![K3S Master1](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/8-InstalarK3SAltaDisp.PNG)
+
 ### 2️⃣ Instalación en master2k3s y master3k3s con referencia al token de master1k3s
 
 En los nodos master2k3s y master3k3s se instaló K3s como nodos adicionales, especificando durante la instalación el token obtenido de master1k3s y la IP del nodo principal. Esto hizo posible la unión de los nodos al clúster, configurando así un entorno con múltiples nodos que ofrecen resiliencia y balanceo de carga para los componentes de control.
+
+![K3S Master2](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/9-InstalarK3SyLinkMast1EnMast2.PNG)
+
+![K3S Master3](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/10-InstalarK3SyLinkMast1EnMast3.PNG)
 
 ### 3️⃣ Verificación del clúster con `kubectl get nodes`
 
 Desde cualquiera de los nodos con la configuración correcta del fichero kubeconfig, se ejecutó el comando para listar los nodos del clúster. Se pudo comprobar que los tres nodos aparecen como listos (`Ready`), donde master1k3s figura con el rol de `control-plane,etcd,master` y master2k3s y master3k3s aparecen con estado listo pero sin roles explícitos de control-plane, lo cual es correcto para un clúster K3s configurado para HA.
 
+![Nodos](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/11-3Nodos.PNG)
+
 ### 4️⃣ Creación y despliegue de nginx-deployment
 
 Se creó un fichero [nginx-deployment.yaml](https://github.com/marconajcoz/pps-1033563/blob/main/RA5/RA5_4/assets/code/nginx-deployment.yaml) que define un despliegue con varias réplicas del servidor web Nginx. Con el comando `kubectl apply -f nginx-deployment.yaml` se aplicó esta configuración al clúster, creando el deployment y el servicio asociado.
+
+![Aplicar Nginx](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/12-AplicarNginxMaster1.PNG)
 
 ### 5️⃣ Comprobación de los pods y servicios
 
@@ -116,10 +126,16 @@ Se verificó que los pods del despliegue de Nginx se estaban ejecutando correcta
 
 El servicio asociado se creó como tipo `LoadBalancer` con un puerto expuesto, aunque en un entorno local el EXTERNAL-IP aparece como `<pending>`, esto es esperado si no hay un controlador externo que asigne IPs públicas.
 
+![Pods y SVC](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/13-PodsYSVCMaster1.PNG)
+
 ### 6️⃣ Prueba de acceso con curl a Nginx
 
 Se realizó una consulta HTTP directa al puerto del servicio expuesto (por ejemplo, en la IP 192.168.1.121 con puerto 31002), y se recibió la página estándar de bienvenida de Nginx. Esto confirma que el servidor web está corriendo correctamente dentro del clúster y es accesible desde la red.
 
+![Curl Nginx](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/14-NginxFunciona.PNG)
+
 ### 7️⃣ Monitorización visual con K9s
 
 Finalmente, se utilizó la herramienta K9s para visualizar el estado del clúster de manera interactiva. En K9s se pudieron observar los pods desplegados, sus estados, nodos en los que se ejecutan, consumo de recursos y más. La visualización confirma que las réplicas de nginx están distribuidas en nodos diferentes, reforzando la arquitectura de alta disponibilidad.
+
+![K9S](https://github.com/marconajcoz/pps-1033563/raw/main/RA5/RA5_4/assets/images/15-HAConseguidaK9S.PNG)
